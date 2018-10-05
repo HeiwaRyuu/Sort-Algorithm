@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+int cont=1;
+float num,vec[50];
+
+float pop(float v[], float a){
+	for(int i=0;i<a;i++){
+		system("cls");
+		printf("\nEnter the element number %d : \n",(i+1));
+		scanf("%f",&v[i]);
+	}
+}
+
+float Bsort(float v[],float a){
+	float aux;
+	for(int i=0;i<a;i++){
+		for(int j=i+1;j<a;j++){
+			if(v[i]>v[j]){
+				aux=v[i];
+				v[i]=v[j];
+				v[j]=aux;
+			}
+		}
+	}
+}
+
+PAS(float v[],float a){
+	for(int i=0;i<a;i++){
+		printf(" %.0f",v[i]);
+	}
+}
+
+int menu(){
+		system("cls");
+		do{
+	printf("Enter the number of elements in the array:\n");
+	scanf("%f",&num);
+	}while(num<=0 || num>50);
+	pop(&vec[50],num);
+	system("cls");
+	printf("\n\nThis is the list before the sort :\n\n");
+	PAS(&vec[50],num);
+	Bsort(&vec[50],num);
+	printf("\n\nThis is the list after the sort :\n\n");
+	PAS(&vec[50],num);
+	printf("\nIf you want to reuse this program enter 1, if you want to leave enter 2.\n");
+	scanf("%d",&cont);
+}
+
+int main(){
+	do{
+		menu();
+	}while(cont==1);
+}
