@@ -1,0 +1,26 @@
+(define aux 0)
+
+(define (compri-aux LI aux)
+  (cond
+    [(empty? LI) aux]
+    [else (compri-aux (cdr LI) (+ aux 1))]))
+
+(define (compri LI)
+  (compri-aux LI aux))
+ 
+(define (Bsort LI)
+  (cond
+    [(null? (cdr LI)) LI]
+    [(<= (car LI) (cadr LI)) (cons (car LI) (Bsort (cdr LI)))]
+    [(> (car LI) (cadr LI)) (cons (cadr LI) (Bsort (cons (car LI) (cddr LI))))]))
+
+(define (Bsort-aux L LI)
+  (cond
+    [(= 1 L) (Bsort LI)]
+    [else (Bsort-aux (- L 1) (Bsort LI))]))
+
+(define (BubbleSort LI)
+  (Bsort-aux (compri LI) LI))
+
+
+
